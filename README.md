@@ -1,4 +1,4 @@
-# Substation Operations Dashboard
+# Vidyutt - Substation Operations Monitor
 
 Complete full-stack web application for digitizing shift operations at UPPTCL 220 kV Sub-Station, Banda, Uttar Pradesh.
 
@@ -33,7 +33,7 @@ npm run seed
 npm run dev
 ```
 
-Backend runs on `http://localhost:4000`
+Backend runs on `http://localhost:5000`
 
 ### Frontend Setup
 
@@ -49,7 +49,7 @@ Frontend runs on `http://localhost:3000`
 ## Project Structure
 
 ```
-substation-dashboard/
+vidyutt/
 ├── client/                 # React frontend
 │   ├── src/
 │   │   ├── pages/         # 6 main pages
@@ -60,7 +60,7 @@ substation-dashboard/
 │   └── tailwind.config.js
 │
 └── server/                 # Node.js/Express backend
-    ├── models/            # MongoDB schemas (4 collections)
+    ├── models/            # MongoDB schemas (5 collections)
     ├── controllers/       # Business logic
     ├── routes/            # API endpoints
     ├── utils/             # Anomaly detection, SF6 correction
@@ -172,24 +172,23 @@ Server-side detection runs before saving any shift log:
 
 All anomalies stored in shift document and displayed in UI.
 
-## Fault Decision Tree
+### Fault Decision Tree
 
-### Main Branches
-| Protection Element | Next Step |
-|--------------------|-----------|
-| 87T Differential | Physical event? → CT failure vs. spurious relay |
-| Buchholz | Alarm vs. Trip → Gas accumulation vs. severe fault |
-| 50/51 OC/EF | Voltage level → 220 kV vs. 132 kV |
-| 21 Distance | Zone → Zone 1 vs. Zone 2+ |
-| 87B Busbar | Direct resolution → Busbar fault |
-| OTI/WTI Temp | Direct resolution → Temperature alarm |
-| SF6 Pressure | Direct resolution → Gas density issue |
-| DC Battery | Direct resolution → Battery alarm |
+### 15 Comprehensive Nodes
+| Level | Questions | Coverage |
+|-------|-----------|----------|
+| Q1 | 5 protection elements | Buchholz, Differential, SF6, Overvoltage, Battery |
+| Q2 | 5 follow-up questions | Fault classification & severity assessment |
+| Q3 | 5 diagnostic questions | Root cause identification |
+| **Resolution** | **4 fault types** | Transformer, Breaker, Bus, Battery |
 
-### Key Incident Path
-**Q1 → 87T Differential → No visible event → CT replaced recently → Still picking up → RESOLVE: 87T_spurious_post_CT_replacement**
+### Resolved Faults
+- **TF_OVERHEAT_001** – Transformer overheating (🔴 Critical)
+- **BREAKER_SF6_LOW_001** – SF6 pressure low (🟠 High)
+- **BUS_VOLTAGE_OOR_001** – Bus voltage out of range (🟠 High)
+- **BATTERY_VOLTAGE_ABNORMAL_001** – Battery float voltage abnormal (🟡 Medium)
 
-This leads to a 10-step investigation checklist based on the actual February 2026 CT failure at the 40 MVA transformer.
+Each resolution includes 6-step investigation checklist + 4 immediate actions.
 
 ## Deployment
 
@@ -201,8 +200,8 @@ This leads to a 10-step investigation checklist based on the actual February 202
 ### Backend (Render)
 1. Push `server/` to GitHub  
 2. Create new "Web Service" on Render
-3. Set environment variables `MONGO_URI` and `PORT=4000`
-4. Start command: `node server.js`
+3. Set environment variables `MONGO_URI` and `PORT=5000`
+4. Start command: `npm start`
 
 ### Database (MongoDB Atlas)
 1. Create free M0 cluster

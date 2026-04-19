@@ -1,7 +1,7 @@
 {
-  "name": "substation-dashboard-server",
+  "name": "vidyutt-server",
   "version": "1.0.0",
-  "description": "Backend for Substation Operations Dashboard - UPPTCL Banda 220 kV",
+  "description": "Backend for Vidyutt - Substation Operations Monitor - UPPTCL Banda 220 kV",
   "main": "server.js",
   "type": "module",
   "scripts": {

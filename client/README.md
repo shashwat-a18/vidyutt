@@ -1,6 +1,6 @@
-# Substation Operations Dashboard - Frontend
+# Vidyutt - Frontend
 
-This is the React frontend for the UPPTCL Substation Operations Dashboard.
+This is the React frontend for Vidyutt, the UPPTCL Substation Operations Monitor.
 
 ## Installation
 

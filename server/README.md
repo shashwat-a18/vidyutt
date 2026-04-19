@@ -1,6 +1,6 @@
-# Substation Operations Dashboard - Backend
+# Vidyutt - Backend
 
-Node.js/Express backend for the UPPTCL Substation Operations Dashboard.
+Node.js/Express backend for Vidyutt, the UPPTCL Substation Operations Monitor.
 
 ## Installation
 
@@ -13,8 +13,8 @@ npm install
 Create a `.env` file (copy from `.env.example`):
 
 ```
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/substation-dashboard?retryWrites=true&w=majority
-PORT=4000
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/vidyutt?retryWrites=true&w=majority
+PORT=5000
 NODE_ENV=development
 ```
 
@@ -38,7 +38,7 @@ This will:
 npm run dev
 ```
 
-Runs on http://localhost:4000
+Runs on http://localhost:5000
 
 ## Production
 

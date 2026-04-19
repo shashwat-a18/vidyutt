@@ -4,7 +4,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-4">
           <div className="text-3xl font-bold tracking-tight">
-            <span className="text-cyan-400">⚡</span> Substation Control Center
+            <span className="text-cyan-400">⚡</span> Vidyutt
           </div>
           <div className="h-12 border-l-2 border-cyan-500"></div>
           <div className="text-sm">

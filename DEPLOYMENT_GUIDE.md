@@ -1,4 +1,4 @@
-# Deployment Guide: Vercel + Render
+# Vidyutt - Deployment Guide: Vercel + Render
 
 ## Overview
 - **Frontend**: Vercel (React + Vite)
@@ -44,9 +44,9 @@ git push origin main  # or your branch
 1. Go to https://render.com
 2. Sign up with GitHub
 3. Create new **Web Service**
-4. Connect GitHub repository (research-project-ii)
+4. Connect GitHub repository (select `substation-dashboard`)
 5. Configure:
-   - **Name**: `substation-dashboard-api`
+   - **Name**: `vidyutt-api`
    - **Environment**: `Node`
    - **Build Command**: `cd server && npm install`
    - **Start Command**: `cd server && npm start`
@@ -79,7 +79,7 @@ app.use(cors({
 ### 2.6 Deploy
 - Click "Deploy" on Render
 - Wait for build to complete (~2-3 minutes)
-- Note your backend URL: `https://substation-dashboard-api.onrender.com`
+- Note your backend URL: `https://vidyutt-api.onrender.com`
 
 ---
 
@@ -93,7 +93,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://substation-dashboard-api.onrender.com',  // Your Render backend URL
+        target: 'https://vidyutt-api.onrender.com',  // Your Render backend URL
         changeOrigin: true,
         rewrite: (path) => path
       }
@@ -106,7 +106,7 @@ Also update any hardcoded API calls in your components to use relative paths or 
 
 ### 3.2 Create `.env.production`
 ```
-VITE_API_BASE_URL=https://substation-dashboard-api.onrender.com
+VITE_API_BASE_URL=https://vidyutt-api.onrender.com
 ```
 
 ### 3.3 Update API Calls
@@ -121,23 +121,23 @@ axios.get(`${API_BASE}/api/shiftlogs`)
 1. Go to https://vercel.com
 2. Sign up with GitHub
 3. Import Project
-4. Select repository: `research-project-ii`
+- Select repository: `vidyutt`
 5. Configure:
    - **Framework**: `Vite`
-   - **Root Directory**: `substation-dashboard/client`
+   - **Root Directory**: `vidyutt/client`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
 
 ### 3.5 Set Environment Variables on Vercel
 In Vercel dashboard → Settings → Environment Variables:
 ```
-VITE_API_BASE_URL=https://substation-dashboard-api.onrender.com
+VITE_API_BASE_URL=https://vidyutt-api.onrender.com
 ```
 
 ### 3.6 Deploy
 - Click "Deploy"
 - Wait for build (~1-2 minutes)
-- Your app will be live at: `https://your-project.vercel.app`
+- Your app will be live at: `https://vidyutt.vercel.app`
 
 ---
 
@@ -148,7 +148,7 @@ Now that you have your Vercel URL, update `server/server.js`:
 ```javascript
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://your-project.vercel.app'  // Add your actual Vercel domain
+  'https://vidyutt.vercel.app'  // Add your actual Vercel domain
 ];
 ```
 Push this change to update Render.
@@ -156,7 +156,7 @@ Push this change to update Render.
 ### 4.2 Test API Connection
 From Vercel frontend, make a test API call:
 ```javascript
-fetch('https://substation-dashboard-api.onrender.com/api/equipment')
+fetch('https://vidyutt-api.onrender.com/api/equipment')
   .then(res => res.json())
   .then(data => console.log(data))
 ```
