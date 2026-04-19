@@ -13,10 +13,20 @@ import equipmentRouter from './routes/equipment.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
+
+// CORS Configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://vidyutt-api.onrender.com',
+  'https://vidyutt.vercel.app'
+];
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Connection
