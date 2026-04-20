@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   'http://localhost:3000',
   'https://vidyutt-api.onrender.com',
-  'https://vidyutt.vercel.app'
+  'https://vidyutt-azure.vercel.app'
 ];
 
 // Middleware
