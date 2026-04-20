@@ -9,6 +9,7 @@ import analyticsRouter from './routes/analytics.js';
 import chatbotRouter from './routes/chatbot.js';
 import reportsRouter from './routes/reports.js';
 import equipmentRouter from './routes/equipment.js';
+import adminRouter from './routes/admin.js';
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ app.use('/api/analytics', analyticsRouter);
 app.use('/api/chatbot', chatbotRouter);
 app.use('/api/reports', reportsRouter);
 app.use('/api/equipment', equipmentRouter);
+app.use('/api/admin', adminRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
