@@ -11,7 +11,7 @@ const Dashboard = () => {
     const fetchLatestShift = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/shiftlogs/latest`
+          `${import.meta.env.VITE_API_BASE_URL}/api/shiftlogs/latest`
         );
         setLatestShift(response.data);
         setError(null);

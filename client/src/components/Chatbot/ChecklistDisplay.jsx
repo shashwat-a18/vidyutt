@@ -17,7 +17,7 @@ const ChecklistDisplay = ({ checklist, sessionData }) => {
 
     // Update server
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/chatbot/progress`, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/chatbot/progress`, {
         sessionId: sessionData._id,
         step,
         completed: !checklistState.find((item) => item.step === step).completed,

@@ -27,7 +27,7 @@ const Reports = () => {
         params.append('shiftType', filterShift);
       }
 
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/shiftlogs?${params}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/shiftlogs?${params}`);
       setReports(response.data.data || []);
     } catch (error) {
       console.error('Error fetching reports:', error);

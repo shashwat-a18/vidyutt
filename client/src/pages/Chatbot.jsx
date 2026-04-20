@@ -12,14 +12,14 @@ const Chatbot = () => {
     setLoading(true);
     try {
       // Create new session
-      const sessionResponse = await axios.post(`${import.meta.env.VITE_API_URL}/chatbot/session`, {
+      const sessionResponse = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/chatbot/session`, {
         operator: operator || 'Anonymous',
       });
 
       setSession(sessionResponse.data);
 
       // Fetch first question
-      const questionResponse = await axios.get(`${import.meta.env.VITE_API_URL}/chatbot/start`);
+      const questionResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/chatbot/start`);
       setCurrentQuestion(questionResponse.data);
     } catch (error) {
       console.error('Error starting session:', error);
@@ -34,7 +34,7 @@ const Chatbot = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/chatbot/next`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/chatbot/next`, {
         sessionId: session._id,
         questionId: currentQuestion.questionId,
         selectedOptionId: optionId,

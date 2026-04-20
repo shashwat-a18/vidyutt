@@ -42,7 +42,7 @@ const ShiftLog = () => {
   const fetchShiftHistory = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/shiftlogs?limit=20`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/shiftlogs?limit=20`);
       setHistory(response.data.data || []);
     } catch (error) {
       console.error('Error fetching shift history:', error);
@@ -63,7 +63,7 @@ const ShiftLog = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/shiftlogs`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/shiftlogs`, formData);
       alert('Shift log created successfully!');
       setFormData({
         operator: '',

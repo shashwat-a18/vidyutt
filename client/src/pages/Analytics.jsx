@@ -59,7 +59,7 @@ const Analytics = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/analytics?equipment=${equipment}&parameter=${parameter}&days=${days}`
+          `${import.meta.env.VITE_API_BASE_URL}/api/analytics?equipment=${equipment}&parameter=${parameter}&days=${days}`
         );
         setData(response.data);
       } catch (error) {
